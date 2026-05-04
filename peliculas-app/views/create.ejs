@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Agregar Película</title>
+    <link rel="stylesheet" href="/resources/css/style.css">
+</head>
+    <body>
+        <div class="auth-wrapper" style="display: flex; justify-content: center; align-items: center; min-height: 100vh; background: #0f0f0f; padding: 20px;">
+        
+            <div style="background: #1a1a1a; padding: 40px; border-radius: 15px; width: 100%; max-width: 600px; border: 1px solid rgba(255,255,255,0.1); box-shadow: 0 20px 40px rgba(0,0,0,0.5);">
+                
+                <h2 style="color: #e50914; margin-bottom: 25px; text-align: center; font-weight: 800;">Nueva Película</h2>
+                
+                <form action="/save" method="POST">
+                    <div style="margin-bottom: 20px;">
+                        <label style="color: #b3b3b3; display: block; margin-bottom: 8px; font-size: 0.8rem; font-weight: 700; text-transform: uppercase;">Título</label>
+                        <input type="text" name="titulo" class="form-control" placeholder="Ej: Inception" required style="width: 100%; background: #222; border: 1px solid #333; color: white; padding: 12px; border-radius: 8px;">
+                    </div>
+
+                    <div style="display: flex; gap: 15px; margin-bottom: 20px;">
+                        <div style="flex: 1;">
+                            <label style="color: #b3b3b3; display: block; margin-bottom: 8px; font-size: 0.8rem; font-weight: 700; text-transform: uppercase;">Año</label>
+                            <input type="number" name="anio" class="form-control" placeholder="2024" required style="width: 100%; background: #222; border: 1px solid #333; color: white; padding: 12px; border-radius: 8px;">
+                        </div>
+                        
+                        <div style="flex: 1;">
+                            <label style="color: #b3b3b3; display: block; margin-bottom: 8px; font-size: 0.8rem; font-weight: 700; text-transform: uppercase;">País</label>
+                            <select name="id_pais" class="form-select" style="width: 100%; background: #222; border: 1px solid #333; color: white; padding: 12px; border-radius: 8px;">
+                                <% paises.forEach((p) => { %>
+                                    <option value="<%= p.id_pais %>"><%= p.nombre %></option>
+                                <% }) %>
+                            </select>
+                        </div>
+
+                        <div style="flex: 1;">
+                            <label style="color: #b3b3b3; display: block; margin-bottom: 8px; font-size: 0.8rem; font-weight: 700; text-transform: uppercase;">Clasificación</label>
+                            <select name="id_clasificacion" class="form-select" style="width: 100%; background: #222; border: 1px solid #333; color: white; padding: 12px; border-radius: 8px;">
+                                <% clasificaciones.forEach((c) => { %>
+                                    <option value="<%= c.id_clasificacion %>"><%= c.nombre %></option>
+                                <% }) %>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div style="margin-bottom: 25px;">
+                        <label style="color: #b3b3b3; display: block; margin-bottom: 8px; font-size: 0.8rem; font-weight: 700; text-transform: uppercase;">Sinopsis</label>
+                        <textarea name="sinopsis" rows="3" style="width: 100%; background: #222; border: 1px solid #333; color: white; padding: 12px; border-radius: 8px; resize: none;"></textarea>
+                    </div>
+
+                    <div style="display: flex; justify-content: space-between; align-items: center;">
+                        <a href="/peliculas" style="color: #888; text-decoration: none; font-size: 0.9rem; font-weight: 600;">Cancelar</a>
+                        <button type="submit" style="background: #e50914; color: white; border: none; padding: 12px 25px; border-radius: 8px; font-weight: 700; cursor: pointer; transition: 0.3s;">
+                            GUARDAR PELÍCULA
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </body>
+</html>

@@ -1,0 +1,301 @@
+/* --- VARIABLES MAESTRAS --- */
+:root {
+    --primary: #e50914;           /* Rojo Netflix */
+    --primary-hover: #b20710;
+    --bg-dark: #0f0f0f;           /* Fondo más profundo */
+    --card-bg: #1a1a1a;           /* Tarjetas sólidas */
+    --input-bg: #222222;
+    --border: rgba(255, 255, 255, 0.1);
+    --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    --text-light: #ffffff;
+    --text-dark: #1a1a1a;         /* Para el contenido de la tabla */
+}
+
+/* --- RESET Y BASE --- */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: var(--bg-dark);
+    color: var(--text-light);
+    font-family: 'Inter', system-ui, -apple-system, sans-serif;
+    min-height: 100vh;
+    line-height: 1.5;
+}
+
+.auth-wrapper{
+    display: flex;          /* Activa el modo flex */
+    justify-content: center; /* Centra horizontalmente */
+    align-items: center;     /* Centra verticalmente */
+    min-height: 100vh;      /* Asegura que ocupe todo el alto de la pantalla */
+    width: 100%;    
+}
+
+/* --- NAVBAR (FIJO Y VISIBLE) --- */
+.navbar {
+    background-color: rgba(0, 0, 0, 0.9) !important;
+    backdrop-filter: blur(20px);
+    border-bottom: 1px solid var(--border);
+    padding: 0.8rem 2rem;
+    z-index: 1000;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.navbar-brand {
+    color: var(--primary) !important;
+    font-weight: 900;
+    font-size: 1.8rem;
+    letter-spacing: -1.5px;
+    text-decoration: none;
+}
+
+/* --- CONTENIDO Y CENTRADO --- */
+.content-section {
+    padding-top: 110px; /* Evita que el navbar tape el título */
+    padding-bottom: 60px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+}
+
+/* Encabezado: Título y Botón alineados */
+.table-header {
+    width: 70rem;
+    max-width: 95%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 25px;
+}
+
+.table-header h2 {
+    color: white !important;
+    font-size: 2.2rem;
+    font-weight: 800;
+}
+
+/* --- PANEL DE LA TABLA (CENTRADO) --- */
+.table-panel {
+    padding: 25px;
+    border-radius: 20px;
+    border: 1px solid var(--border);
+    width: 70rem;
+    max-width: 95%;
+    margin: 0 auto;
+}
+
+.table {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0 8px;
+}
+
+/* --- TÍTULOS DE COLUMNA (VISIBLES) --- */
+.table thead th {
+    border: none;
+    color: #000000 !important; /* Blanco para resaltar sobre el fondo oscuro */
+    font-size: 0.75rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    padding: 15px;
+    text-align: center;
+}
+
+/* --- FILAS Y CONTENIDO (CORREGIDO TEXTO) --- */
+.table tbody tr {
+    background-color: #ffffff !important; /* Fondo blanco como en tus capturas */
+    transition: var(--transition);
+}
+
+.table tbody tr:hover {
+    background-color: #f0f0f0 !important;
+    transform: scale(1.01) translateX(5px);
+}
+
+.table td {
+    padding: 18px 15px;
+    vertical-align: middle;
+    text-align: center;
+    border: none;
+    color: var(--text-dark) !important; /* TEXTO OSCURO PARA QUE SE VEA */
+    font-weight: 500;
+}
+
+.table tbody tr td:first-child { border-radius: 12px 0 0 12px; }
+.table tbody tr td:last-child { border-radius: 0 12px 12px 0; }
+
+/* --- BOTONES DE ACCIÓN --- */
+.btn-new {
+    background-color: #007bff;
+    color: white !important;
+    padding: 10px 20px;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: 700;
+    transition: var(--transition);
+}
+
+.btn-edit, .btn-delete {
+    padding: 10px 16px;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 0.85rem;
+    transition: var(--transition);
+    display: inline-block;
+}
+
+.btn-edit {
+    color: #4dabf7;
+    background: rgba(77, 171, 247, 0.1);
+}
+
+.btn-delete {
+    color: #ff6b6b;
+    background: rgba(255, 107, 107, 0.1);
+    margin-left: 8px;
+}
+
+/* --- ESTILOS DE FORMULARIO (Mantenidos) --- */
+.auth-card {
+    
+    background-color: rgba(0, 0, 0, 0.75);
+    backdrop-filter: blur(12px);
+    padding: 50px;
+    border-radius: 16px;
+    width: 40%;
+    max-width: 480px; 
+    border: 1px solid var(--border);
+}
+
+/* --- ESTILOS PARA EL MODAL --- */
+
+/* Fondo oscurecido detrás del modal */
+.modal {
+    background-color: rgba(0, 0, 0, 0.7);
+    backdrop-filter: blur(5px);
+}
+
+/* Contenedor principal del modal */
+.modal-content {
+    background-color: #1a1a1a !important; /* Fondo oscuro sólido */
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    box-shadow: 0 25px 50px rgba(0, 0, 0, 0.5);
+    color: white;
+}
+
+/* Encabezado del modal */
+.modal-header {
+    border-bottom: 1px solid var(--border);
+    padding: 20px 30px;
+}
+
+.modal-title {
+    font-weight: 800;
+    letter-spacing: -0.5px;
+    color: white;
+}
+
+/* Cuerpo del modal (Formulario) */
+.modal-body {
+    padding: 30px;
+}
+
+/* Estilo para los Labels dentro del modal */
+.modal-body .form-label {
+    color: #b3b3b3 !important; /* Gris claro para los títulos de los campos */
+    font-size: 0.75rem;
+    font-weight: 600px;
+    text-transform: uppercase;
+    margin-bottom: 8px;
+}
+
+/* Inputs y Selects específicos del modal */
+.modal-body .form-control, 
+.modal-body .form-select {
+    background-color: #2a2a2a !important;
+    border: 1px solid #444 !important;
+    color: white !important;
+    padding: 12px !important;
+    border-radius: 8px !important;
+}
+
+.modal-body .form-control:focus {
+    border-color: var(--primary) !important;
+    box-shadow: 0 0 0 3px rgba(229, 9, 20, 0.25) !important;
+    background-color: #333 !important;
+}
+
+/* Pie del modal (Botones) */
+.modal-footer {
+    border-top: 1px solid var(--border);
+    padding: 20px 30px;
+    display: flex;
+    gap: 15px;
+}
+
+/* Botón Guardar Película */
+.btn-submit-modal {
+    background-color: var(--primary) !important;
+    color: white !important;
+    border: none !important;
+    padding: 10px 25px !important;
+    border-radius: 8px !important;
+    font-weight: 700 !important;
+    text-transform: uppercase;
+    transition: var(--transition);
+}
+
+.btn-submit-modal:hover {
+    background-color: var(--primary-hover) !important;
+    transform: translateY(-2px);
+}
+
+/* Botón Cancelar del modal */
+.btn-close-modal {
+    background-color: #444 !important;
+    color: white !important;
+    border: none !important;
+    padding: 10px 25px !important;
+    border-radius: 8px !important;
+    font-weight: 600 !important;
+}
+
+.btn-close-modal:hover {
+    background-color: #555 !important;
+}
+/* --- ESTILO PARA PLACEHOLDERS EN EL MODAL --- */
+
+/* Chrome, Firefox, Opera, Safari */
+.modal-body .form-control::placeholder {
+    color: rgba(255, 255, 255, 0.4) !important; /* Blanco suave con transparencia */
+    font-size: 0.9rem;
+    opacity: 1; /* Necesario para Firefox */
+}
+
+/* Internet Explorer 10-11 */
+.modal-body .form-control:-ms-input-placeholder {
+    color: rgba(255, 255, 255, 0.4) !important;
+}
+
+/* Microsoft Edge */
+.modal-body .form-control::-ms-input-placeholder {
+    color: rgba(255, 255, 255, 0.4) !important;
+}
+
+/* Efecto al hacer foco (opcional, para que el placeholder sea más tenue) */
+.modal-body .form-control:focus::placeholder {
+    color: rgba(255, 255, 255, 0.2) !important;
+    transition: color 0.3s ease;
+}

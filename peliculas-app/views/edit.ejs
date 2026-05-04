@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Editar Película</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="/resources/css/style.css">
+</head>
+<body class="bg-dark text-white">
+
+    <div class="auth-wrapper">
+    <div class="auth-card" style="max-width: 650px;"> <h2>Editar Película</h2>
+        <p class="text-center mb-4">Modifica la información detallada de la obra</p>
+
+        <form action="/update" method="POST">
+            <input type="hidden" name="id_pelicula" value="<%= peli.id_pelicula %>">
+
+            <div class="mb-3">
+                <label class="form-label">Título Original</label>
+                <input type="text" name="titulo" class="form-control" value="<%= peli.titulo %>" required>
+            </div>
+
+            <div class="row">
+                <div class="col-md-6 mb-3">
+                    <label class="form-label">Año de Lanzamiento</label>
+                    <input type="number" name="anio" class="form-control" value="<%= peli.anio %>" required>
+                </div>
+                <div class="col-md-6 mb-3">
+                    <label class="form-label">Duración (minutos)</label>
+                    <input type="number" name="duracion_minutos" class="form-control" value="<%= peli.duracion_minutos %>">
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-6 mb-3">
+                    <label class="form-label">Clasificación</label>
+                    <select name="id_clasificacion" class="form-select">
+                        <% clasificaciones.forEach((c) => { %>
+                            <option value="<%= c.id_clasificacion %>" <%= c.id_clasificacion == peli.id_clasificacion ? 'selected' : '' %>>
+                                <%= c.nombre %>
+                            </option>
+                        <% }) %>
+                    </select>
+                </div>
+                <div class="col-md-6 mb-3">
+                    <label class="form-label">País de Origen</label>
+                    <select name="id_pais" class="form-select">
+                        <% paises.forEach((p) => { %>
+                            <option value="<%= p.id_pais %>" <%= p.id_pais == peli.id_pais ? 'selected' : '' %>>
+                                <%= p.nombre %>
+                            </option>
+                        <% }) %>
+                    </select>
+                </div>
+            </div>
+
+            <div class="mb-4">
+                <label class="form-label">Sinopsis / Resumen</label>
+                <textarea name="sinopsis" class="form-control" rows="4" placeholder="Escribe una breve descripción..."><%= peli.sinopsis %></textarea>
+            </div>
+
+            <div class="d-grid gap-2">
+                <button type="submit" class="btn btn-primary">Actualizar Información</button>
+                <a href="/peliculas" class="btn btn-outline-light btn-sm text-center" style="border: none; color: var(--text-muted);">
+                    Cancelar y volver
+                </a>
+            </div>
+        </form>
+    </div>
+</div>
+
+</body>
+</html>
